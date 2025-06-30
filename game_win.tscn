@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://btko6xcp6cggb"]
+
+[ext_resource type="Script" uid="uid://c32xkff1f18sh" path="res://game_over.gd" id="1_mqop6"]
+[ext_resource type="FontFile" uid="uid://b75o3e1x8gu1a" path="res://kenvector_future.ttf" id="2_ofodp"]
+[ext_resource type="FontFile" uid="uid://ce0x0wpxmj3kp" path="res://kenvector_future_thin.ttf" id="3_xjgbc"]
+[ext_resource type="Texture2D" uid="uid://140ud67126x0" path="res://PNG/green_button04.png" id="4_kbyyh"]
+[ext_resource type="Texture2D" uid="uid://coo355w5xff3y" path="res://PNG/green_button05.png" id="5_djdss"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkf4o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3u7xm"]
+texture = ExtResource("4_kbyyh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_woa3c"]
+texture = ExtResource("5_djdss")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dd2jf"]
+texture = ExtResource("4_kbyyh")
+
+[node name="GameWin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqop6")
+
+[node name="game_win_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -358.0
+offset_top = 58.0
+offset_right = 358.0
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ofodp")
+theme_override_font_sizes/font_size = 100
+text = "Game Won!"
+horizontal_alignment = 1
+
+[node name="home_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.5
+offset_top = -61.0
+offset_right = 201.5
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xjgbc")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxTexture_fkf4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3u7xm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_woa3c")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dd2jf")
+text = "Home"
+
+[node name="play_again_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.5
+offset_top = 102.0
+offset_right = 201.5
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xjgbc")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxTexture_fkf4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3u7xm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_woa3c")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dd2jf")
+text = "Again"
+
+[connection signal="pressed" from="home_button" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="play_again_button" to="." method="_on_play_again_button_pressed"]

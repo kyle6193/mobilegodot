@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsr71xsxiocst"]
+
+[ext_resource type="Texture2D" uid="uid://8do8yt24icbu" path="res://PNG/blue_button04.png" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://dipfbae5lflfh" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="FontFile" uid="uid://ce0x0wpxmj3kp" path="res://kenvector_future_thin.ttf" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://chp84xrnywh50" path="res://PNG/blue_button05.png" id="2_h2yge"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xm2m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1bvp3"]
+texture = ExtResource("1_0xm2m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lquwl"]
+texture = ExtResource("2_h2yge")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7mycd"]
+texture = ExtResource("1_0xm2m")
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1bvp3")
+
+[node name="IncreaseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -44.0
+offset_right = 204.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h2yge")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxTexture_0xm2m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1bvp3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lquwl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7mycd")
+text = "Increase"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 57.0
+offset_right = 181.0
+offset_bottom = 142.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_h2yge")
+theme_override_font_sizes/font_size = 75
+text = "Score: 0"
+
+[node name="AimScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.0
+offset_top = 136.0
+offset_right = 180.0
+offset_bottom = 221.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_h2yge")
+theme_override_font_sizes/font_size = 45
+text = "Aim Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -277.5
+offset_top = -147.0
+offset_right = 277.5
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_h2yge")
+theme_override_font_sizes/font_size = 75
+text = "Time left: 0s"
+
+[node name="time_left_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="IncreaseButton" to="." method="_on_increase_button_pressed"]
+[connection signal="timeout" from="time_left_timer" to="." method="_on_time_left_timer_timeout"]
